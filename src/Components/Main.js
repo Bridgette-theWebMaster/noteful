@@ -1,40 +1,49 @@
-import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import React from "react";
+import Note from "./Note";
+import Moment from "react-moment";
+import { Link } from "react-router-dom";
+import ApiContext from "../ApiContext";
+import PropTypes from "prop-types";
+import { getNotesInFolder } from "./Notes-helper";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Main = (props) => {
-
-    let folderID = props.match.params.folderId
-
-    let notes = []
-
-    if (folderID === undefined){
-        notes = props.notes
-    } else {
-        notes = props.notes.filter(note => {
-            return (folderID === note.folderId)
-        })
-    }
-
-    const note = notes.map(note => {
-        return (
-            <div className="noteSelection" key={note.id}>
-                <Link to={`/note/${note.id}`}>
-                    <li>
-                        <h1>{note.name}</h1>
-                        <p>Last modified: {note.modified}</p>
-                        <button type="button">Don't click me yet</button>
-                    </li>
-                </Link>
-            </div>
-        )
-    })
-
-    return(
+export default class Main extends React.Component {
+  static defaultProps = {
+    match: {
+      params: {},
+    },
+  };
+  static contextType = ApiContext;
+  render() {
+    const { folderId } = this.props.match.params;
+    const { notes = [] } = this.context;
+    const notesInFolder = getNotesInFolder(notes, folderId);
+    return (
+      <section id="noteMain">
+        <ul>
+          {notesInFolder.map((note) => (
+            <li key={note.id}>
+              <Note
+                id={note.id}
+                name={note.name}
+                modified={<Moment>{note.modified}</Moment>}
+              />
+            </li>
+          ))}
+        </ul>
         <div>
-        {note}
-        <button type="button">Add note</button>
+          <Link to="/add-note">
+            <button id="add">
+              <FontAwesomeIcon icon="plus" />
+              <br /> Note
+            </button>
+          </Link>
         </div>
-    )
+      </section>
+    );
+  }
 }
 
-export default withRouter(Main)
+Main.propTypes = {
+  match: PropTypes.object,
+};

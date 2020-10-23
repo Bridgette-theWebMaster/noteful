@@ -1,30 +1,36 @@
-import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import ApiContext from "../ApiContext";
+import { countNotesInFolder } from "./Notes-helper";
 
-class Folder extends React.Component {
-    render(){
+export default class Folder extends React.Component {
+  static contextType = ApiContext;
 
-        let folderID = this.props.match.params.folderId
+  render() {
+    const { folders = [], notes = [] } = this.context;
 
-        const folderNames = this.props.folders.map(folder => {
-            return (
-                <div key={folder.id}>
-                <Link to={`/folder/${folder.id}`}>
-                    <p className={`navBarTile ${folder.id === folderID ? 'highlight' : null}`}>
-                    {folder.name}
-                    </p>
-                </Link>
-                </div>
-            )
-        })
+    return (
+      <div id="navs">
+        <ul>
+          {folders.map((folder, i) => (
+            <li key={i}>
+              <NavLink className="folder-link" to={`/folder/${folder.id}`}>
+                {folder.name}
 
-    return(
-        <div>
-            {folderNames}
-            <button type="button">Add folder</button>
-        </div>
-    )
-    }
+                <div id="number">{countNotesInFolder(notes, folder.id)}</div>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+        <Link to="/add-folder">
+          <button className="new-folder">
+            <FontAwesomeIcon icon="plus" />
+            <br /> Folder
+          </button>
+        </Link>
+      </div>
+    );
+  }
 }
-
-export default withRouter(Folder)

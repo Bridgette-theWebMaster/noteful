@@ -1,50 +1,161 @@
-li {
-    list-style: none;
+/* Headings */
+header {
+  padding: 2%;
+  text-align: center;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  background-color: #c69c72;
+  border-width: 0.1px;
 }
 
-.highlight {
-    background: yellow;
-    color: black;
+h2 {
+  text-align: center;
 }
 
-.navHeader {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    background: aqua;
-    padding: 10vh;
-    font-size: 40px;
-    margin-bottom: 10px;
+body {
+  background-color: #c69c72;
+  color: #433e3f;
+  font-weight: 500;
+  font-family: Montserrat;
 }
 
-.navFlex {
-    display: flex;
+/* Lists and Links */
+
+ul {
+  list-style: none;
 }
 
-.navBarTile {
-    display: flex;
-    border-style: solid;
-    border-width: 1px;
-    padding: 10px;
-    justify-items: left;
+a:link {
+  text-decoration: none;
+  color: #7a7265;
 }
 
-.noteSelection {
+a:active {
+  background-color: #c0b7b1;
+  color: #8e6e53;
+}
+
+a:visited {
+  color: #8e6e53;
+}
+
+#navs {
+  background-color: #c69c72;
+}
+
+#navs li {
+  border: solid;
+  border-width: 0.1px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #c0b7b1;
+  font-family: Montserrat;
+  font-weight: bold;
+}
+
+#navs li:active {
+  background-color: #c0b7b1;
+}
+
+#number {
+  border: transparent;
+  border-width: 0.2px;
+  border-radius: 10px;
+  text-align: center;
+  width: 20px;
+  background-color: #c0b7b1;
+}
+
+#note {
+  width: 25vw;
+  background-color: #c0b7b1;
+  border: solid;
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
+#left {
+  width: 25vw;
+  height: 100vh;
+  background-color: #c69c72;
+}
+
+#note-content {
+  width: 50vw;
+  margin: 75px;
+}
+
+/* Buttons */
+
+button {
+  border: solid;
+  border-width: 0.1px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #c0b7b1;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: Montserrat;
+}
+
+#add {
+  margin-left: 270px;
+  background-color: #c0b7b1;
+}
+
+#delete {
+  margin-left: 200px;
+  font-family: Montserrat;
+}
+
+.add-note {
+  display: grid;
+  margin: 50px;
+  border: solid;
+  background-color: #c0b7b1;
+  color: #433e3f;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-family: Montserrat;
+}
+
+.new-folder {
+  background-color: #c0b7b1;
+}
+
+input,
+select {
+  margin: 15px;
+  padding: 10px;
+}
+
+.validate {
+  color: red;
+}
+
+@media only screen and (max-width: 860px) {
+  #container {
     display: flex;
     flex-direction: column;
-    border-style: solid;
-    margin-left: 20px;
     width: 100%;
-}
+  }
 
-.noteSelection h1 {
-    color: red
-}
+  #note {
+    width: 100%;
+  }
 
-.noteSelection p {
-    color: purple;
-}
-
-.noteSelection button {
-    color: green;
+  ul,
+  li {
+    width: 85%;
+  }
+  #left {
+    width: auto;
+    height: auto;
+  }
 }
