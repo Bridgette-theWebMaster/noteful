@@ -1,3 +1,4 @@
 export default {
-  API_ENDPOINT: process.env.API_ENDPOINT,
+  API_ENDPOINT: `https://dry-island-41042.herokuapp.com/`,
+  API_KEY: process.env.REACT_APP_API_KEY,
 };
