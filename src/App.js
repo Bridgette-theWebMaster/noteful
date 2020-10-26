@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
-import Folder from "./components/Folder";
-import NoteNav from "./components/NoteNav";
-import Main from "./components/Main";
-import NotePage from "./components/NotePage";
+import Folder from "./Components/Folder";
+import NoteNav from "./Components/NoteNav";
+import Main from "./Components/Main";
+import NotePage from "./Components/NotePage";
 import "./App.css";
-import AddNote from "./components/AddNote";
+import AddNote from "./Components/AddNote";
 import ApiContext from "./ApiContext";
 import config from "./config";
-import AddFolder from "./components/AddFolder";
+import AddFolder from "./Components/AddFolder";
 import ErrorBoundary from "./ErrorBoundary";
 
 class App extends Component {
