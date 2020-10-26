@@ -19,7 +19,7 @@ export default class AddNote extends React.Component {
       .then((response) => {
         return response.json();
       })
-      .then((responseJson) => this.context.addNewNote(responseJson))
+      .then((responseJson) => this.context.handleAddNote(responseJson))
       .catch((error) => {
         this.setState({ hasError: true });
       });
